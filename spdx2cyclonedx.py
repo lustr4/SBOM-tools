@@ -29,6 +29,8 @@ def convert_spdx_to_cyclonedx(spdx_file, cyclonedx_file):
     # Save the CycloneDX file in JSON format
     if '../' in cyclonedx_file or '..\\' in cyclonedx_file:
         raise Exception('Invalid file path')
+    if '../' in cyclonedx_file or '..\\' in cyclonedx_file:
+        raise Exception('Invalid file path')
     with open(cyclonedx_file, 'w') as file:
         json.dump(cyclonedx_data, file, indent=4)
 
