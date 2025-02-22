@@ -3,6 +3,8 @@ import json
 
 def convert_spdx_to_cyclonedx(spdx_file, cyclonedx_file):
     # Load the SPDX file (assumed to be in JSON format)
+    if '../' in spdx_file or '..\\' in spdx_file:
+        raise Exception('Invalid file path')
     with open(spdx_file, 'r') as file:
         spdx_data = json.load(file)
     
@@ -25,6 +27,8 @@ def convert_spdx_to_cyclonedx(spdx_file, cyclonedx_file):
         cyclonedx_data["components"].append(component)
     
     # Save the CycloneDX file in JSON format
+    if '../' in cyclonedx_file or '..\\' in cyclonedx_file:
+        raise Exception('Invalid file path')
     with open(cyclonedx_file, 'w') as file:
         json.dump(cyclonedx_data, file, indent=4)
 
